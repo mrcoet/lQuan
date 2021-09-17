@@ -6,8 +6,8 @@ from web3.middleware import geth_poa_middleware
 
 
 async def main():
-    # w3 = Web3(Web3.AsyncHTTPProvider("https://speedy-nodes-nyc.moralis.io/4f348cc7dce6203fab3db9cf/bsc/mainnet", modules={"eth": (AsyncEth)}, middlewares=[]))
-    w3 = Web3(AsyncHTTPProvider("https://speedy-nodes-nyc.moralis.io/4f348cc7dce6203fab3db9cf/bsc/mainnet"), modules={"eth": (AsyncEth,), "net": (AsyncNet,)}, middlewares=[])
+    moralis_url = ""
+    w3 = Web3(AsyncHTTPProvider(moralis_url), modules={"eth": (AsyncEth,), "net": (AsyncNet,)}, middlewares=[])
     print(type(w3.provider))
     coinbase = await w3.eth.coinbase
     print(coinbase)
@@ -20,8 +20,9 @@ async def main():
 
 
 async def tokenAge(tokenAddress: str):
-    w3 = Web3(AsyncHTTPProvider("https://speedy-nodes-nyc.moralis.io/4f348cc7dce6203fab3db9cf/bsc/mainnet"), modules={"eth": (AsyncEth,), "net": (AsyncNet,)}, middlewares=[])
-    # w3.middleware_onion.inject(geth_poa_middleware, layer=0)
+    moralis_url = ""
+    w3 = Web3(AsyncHTTPProvider(moralis_url), modules={"eth": (AsyncEth,), "net": (AsyncNet,)}, middlewares=[])
+    w3.middleware_onion.inject(geth_poa_middleware, layer=0)
     blockNumber = await w3.eth.block_number
     fromBlock = blockNumber - 4000
     fromBlock = hex(int(fromBlock))
