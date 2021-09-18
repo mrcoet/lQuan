@@ -4,3 +4,4 @@ pip install web3
 pip install sqlalchemy[asyncio]
 pip install asyncpg
 pip install aiohttp
+pip install --pre gql[all]

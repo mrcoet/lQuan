@@ -1,13 +1,94 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.bg-darker {
+  background-color: #15202b !important;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.bg-lessdarker {
+  background-color: #192734 !important;
+}
+
+.bg-lessdarker a:hover {
+  background-color: rgb(255, 255, 255, 0.03) !important; /* #202e3a */
+}
+
+.bg-page {
+  background-color: #15202b !important;
+}
+
+.bg-page-next {
+  background-color: #15202b !important;
+}
+
+.bg-page-pre {
+  background-color: #15202b !important;
+}
+
+.bg-page-btn {
+  cursor: pointer;
+}
+
+.bg-page-btn:hover {
+  background-color: #192734 !important;
+  color: rgb(243, 183, 52) !important;
+}
+
+.me-2 {
+  color: #1edabf !important;
+}
+
+.rounded-12 {
+  border-radius: 16px !important;
+  /* border-color: #192734;
+  border-width: 1px;
+  border-style: solid;
+  overflow: hidden; */
+}
+
+.list-group-item:first-child {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+.list-group-item:last-child {
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.link-primarier {
+  color: #7b59ec !important;
+}
+
+.link-primarier a {
+  color: #7b59ec !important;
+}
+
+.link-primarier:hover {
+  color: #623ae4 !important;
+  background-color: rgb(255, 255, 255, 0) !important;
+}
+
+.link-page {
+  color: #7b59ec !important;
+}
+
+.link-page:hover {
+  color: #623ae4 !important;
+  background-color: rgb(255, 255, 255, 0) !important;
+}
+
+.bg-page {
+  background-color: #7b59ec !important;
+}
+
+.start-97 {
+  left: 96% !important;
+}
+
+.btn-page {
+  border: none !important;
+  background-color: rgb(255, 255, 255, 0) !important;
+  color: #7b59ec !important;
+}
+
+.btn-page:hover {
+  color: rgb(243, 183, 52) !important;
 }
