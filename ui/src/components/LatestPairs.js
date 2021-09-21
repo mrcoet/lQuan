@@ -1,45 +1,71 @@
-import { useState, useEffect, useCallback } from "react"
-import { LatestPair } from "./LatestPair"
-import { LatestPairModal } from './LatestPairModal';
+import { useState, useEffect, useCallback } from "react";
+import { LatestPair } from "./LatestPair";
+import { LatestPairModal } from "./LatestPairModal";
 
 export const LatestPairs = () => {
-    const [pairs, setPairs] = useState([])
+    const [pairs, setPairs] = useState([]);
 
-    const [page, setPage] = useState(1)
+    const [page, setPage] = useState(1);
 
-    const [search, setSearch] = useState(0)
+    const [search, setSearch] = useState(0);
 
-    const [pairAddress, setPairAddress] = useState("")
-    const [tokenAddress, setTokenAddress] = useState("")
+    const [pairAddress, setPairAddress] = useState("");
+
+    const [pairInfo, setPairInfo] = useState()
+
+    const [pairInfoSwitch, setPairInfoSwitch] = useState(0)
+
     const [tokenName, setTokenName] = useState("")
+
     const [tokenSymbol, setTokenSymbol] = useState("")
-    const [mCap, setMCap] = useState(0.0)
+
 
     useEffect(() => {
-        setPairs([])
+        setPairs([]);
         const getPairs = async () => {
-            const pairsFromServer = await fetchPairs()
-            setPairs(pairsFromServer)
-        }
-        console.log('useEffect Enter')
-        getPairs()
-    }, [page])
+            const pairsFromServer = await fetchPairs();
+            setPairs(pairsFromServer);
+        };
+        console.log("useEffect Enter");
+        getPairs();
+    }, [page]);
 
     //fetch pairs
     const fetchPairs = async () => {
-        console.log(`fetchPairs - page ${page}`)
-        console.log(`http://localhost:8000/latestpairs/${page - 1}`)
-        const res = await fetch(`http://localhost:8000/latestpairs/${page - 1}`)
-        const data = await res.json()
-        return data
-    }
+        console.log(`fetchPairs - page ${page}`);
+        console.log(`http://localhost:8000/latestpairs/${page - 1}`);
+        const res = await fetch(`http://localhost:8000/latestpairs/${page - 1}`);
+        const data = await res.json();
+        return data;
+    };
 
-    const updateModal = (pair_address, token_address, token_name, token_symobl, mcap) => {
-        setPairAddress(pair_address)
-        setTokenAddress(token_address)
+    const updateModal = (pair_address, token_name, token_symbol) => {
         setTokenName(token_name)
-        setTokenSymbol(token_symobl)
-        setMCap(mcap)
+        setTokenSymbol(token_symbol)
+        setPairAddress(pair_address)
+        setPairInfoSwitch(1)
+
+    };
+
+    useEffect(() => {
+        const getPairInfo = async () => {
+            const pairInfoFromServer = await fetchPairsInfo()
+            setPairInfo(pairInfoFromServer)
+        }
+        if (pairInfoSwitch == 1) {
+            setPairInfo()
+            setPairInfoSwitch(0)
+            getPairInfo()
+
+        }
+
+    }, [pairAddress])
+
+    const fetchPairsInfo = async () => {
+        const res = await fetch(`http://localhost:8000/modal/${pairAddress}`)
+        const data = await res.json()
+        console.log(data)
+        return data
     }
 
     return (
@@ -80,11 +106,11 @@ export const LatestPairs = () => {
                         </button>
                     </div>
                 </div>
-                <LatestPairModal tokenName={tokenName} tokenSymbol={tokenSymbol} />
+                <LatestPairModal pairInfo={pairInfo} tokenName={tokenName} tokenSymbol={tokenSymbol} />
                 {pairs.map((pair) => (
-                    <LatestPair key={pair.id} info={pair} onClick={(pair_address, token_address, token_name, token_symobl, mcap) => updateModal(pair_address, token_address, token_name, token_symobl, mcap)} />
+                    <LatestPair key={pair.id} info={pair} onClick={(pair_address, token_name, token_symbol) => updateModal(pair_address, token_name, token_symbol)} />
                 ))}
             </div>
         </main>
-    )
-}
+    );
+};

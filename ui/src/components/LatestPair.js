@@ -9,7 +9,7 @@ export const LatestPair = ({ info, onClick }) => {
 
         <>
 
-            <a type="button" className="list-group-item d-flex gap-3 py-3 border-0 bg-lessdarker text-light" data-bs-toggle="modal" data-bs-target="#pairsModal" onClick={() => onClick(info.pairAddress, info.quoteTokenAddres, info.quoteTokenName, info.quoteTokenSymbol, info.mCap)}>
+            <a type="button" className="list-group-item d-flex gap-3 py-3 border-0 bg-lessdarker text-light" data-bs-toggle="modal" data-bs-target="#pairsModal" onClick={() => onClick(info.pairAddress, info.quoteTokenName, info.quoteTokenSymbol)}>
                 {/* <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32" className="rounded-circle flex-shrink-0 my-auto" /> */}
 
                 {info.quoteTokenLogo ? <img src={`data:image/png;base64,${info.quoteTokenLogo}`} width="32" height="32" className="rounded-circle flex-shrink-0 my-auto" /> : <img src="/static/empty-token-bnb.png" width="32" height="32" className="rounded-circle flex-shrink-0 my-auto" />}

@@ -27,7 +27,7 @@ if str(pancakeSwapRouterAddress) not in str(source_code):  # ----> Don't use Rou
     print("[FAIL] Contract doesn't use valid PancakeSwap v2 router.")
 
 
-if "telegram" in str(source_code).lower():  # ---> has Telegram
+if "telegram" in str(source_code).lower() or "t.me" in str(source_code).lower():  # ---> has Telegram
     print("has telegram")
 
 if "website" in str(source_code).lower():  # ---> Has websit

@@ -89,6 +89,12 @@ class Cake:
     async def get_token_name(self, token0_contract):
         return await greenlet_spawn(self.private_get_token_name, token0_contract)
 
+    def private_get_token_owner(self, token_contract):
+        return token_contract.functions.owner().call()
+
+    async def get_token_owner(self, token_contract):
+        return await greenlet_spawn(self.private_get_token_owner, token_contract)
+
     def private_pair_total_supply(self, pair_contract):
         return pair_contract.functions.totalSupply().call()
 

@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from routers import latestPairs
+from routers import pairModal
 
 app = FastAPI()
 
@@ -19,3 +20,4 @@ app.add_middleware(
 
 
 app.include_router(latestPairs.router_latest_pairs)
+app.include_router(pairModal.router_pair_modal)
