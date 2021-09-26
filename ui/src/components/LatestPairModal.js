@@ -192,7 +192,7 @@ export const LatestPairModal = ({ pairInfo, tokenName, tokenSymbol }) => {
                                                                 </div>
                                                             </div></>
                                                         ) : (<div className="d-flex align-items-center">
-                                                            <img className="p-1" src="/static/Oky.svg" alt="not" width="25px" height="25px" />
+                                                            <img className="p-1" src="/static/Ok.svg" alt="not" width="25px" height="25px" />
                                                             <div className="p-1 align-middle"><span className="opacity-25 pe-2">No Bad Methods</span>
                                                             </div>
                                                         </div>)}

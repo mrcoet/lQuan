@@ -59,7 +59,13 @@
 
 # asyncio.run(get_contract("0x8076c74c5e3f5852037f31ff0093eeb8c8add8d3"))
 # =========================================================================
-from pairModal.honeypot import check_honeypot
+# from pairModal.honeypot import check_honeypot
+# import asyncio
+
+# asyncio.run(check_honeypot("0x13668c334701798261583A7969A467e42937286A"))
+# =========================================================================
+from calls.streamingFast.latestPairs import latest_pairs
 import asyncio
 
-asyncio.run(check_honeypot("0x13668c334701798261583A7969A467e42937286A"))
+res = asyncio.run(latest_pairs(10, 0))
+print(res)
