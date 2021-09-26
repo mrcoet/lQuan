@@ -11,3 +11,8 @@
 ```
 
 BSC Liquidity Analysis.
+
+## Hope to Achieve
+
+- snip bot
+- find valuable tokens with very low price
